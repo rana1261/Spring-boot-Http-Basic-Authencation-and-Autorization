@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <h2>User</h2>
+    <h3 th:inline="text">Hi! user [[${#httpServletRequest.remoteUser}]]</h3>
+    <p> who have user role.they can access this page. otherwise,it will return 403 page (access denied).</p>
+</div>
+</body>
+</html>

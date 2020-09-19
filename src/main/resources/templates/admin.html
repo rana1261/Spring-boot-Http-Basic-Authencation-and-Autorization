@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <h2>Admin</h2>
+    <h3 th:inline="text">Hi! admin [[${#httpServletRequest.remoteUser}]]</h3>
+    <p>Click <a th:href="@{/admin/admin_detail}">here</a> to see a admin Page(only have admin role).</p>
+    <p> who have admin role.they can access this page. otherwise,it will return 403 page (access denied).</p>
+</div>
+</body>
+</html>

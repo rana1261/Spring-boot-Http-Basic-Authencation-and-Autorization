@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--1st one for thymeleaf support and 2nd one for page access based on role and which page shown or hide-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <h1>Spring Security</h1>
+    <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+    <br><br>
+    <!--you can control what to be shown based on user’s role.-->
+    <div sec:authorize="hasRole('ADMIN')">
+    <p>Click <a th:href="@{/admin}">here</a> to see a admin Page(only have admin role).</p>
+    </div>
+    <div sec:authorize="hasRole('USER')">
+    <p>Click <a th:href="@{/user}">here</a> to see a user Page(only have user role).</p>
+    </div>
+    only users having either USER or ADMIN role and both role can see the link oherwise not.
+    <div sec:authorize="hasAnyRole('USER', 'ADMIN')">
+    <p>Click <a th:href="@{/user&admin}">here</a> to see a user&admin Page(have any role or have both role).</p>
+    </div>
+    <p>Click <a th:href="@{/general}">here</a> to see a general Page(no bound on role but,to be authenticated).</p>
+
+</div>
+</body>
+</html>
